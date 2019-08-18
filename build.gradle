@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ivamladenova'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.testng', name: 'testng', version: '6.14.3'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '4.0.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.7'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
+    compile group: 'org.apache.poi', name: 'poi', version: '4.1.0'
+}
+
+task getHomeDir {
+    println gradle.gradleHomeDir
+}
+task runAllTests (type: Test, description: 'Functional api tests'){
+
+    include "**/api/**"
+
+    useTestNG()
+
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat "full"
+        events "passed", "skipped", "failed"
+    }
+}
