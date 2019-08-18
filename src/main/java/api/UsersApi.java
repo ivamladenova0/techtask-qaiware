@@ -13,7 +13,7 @@ public class UsersApi extends BaseApi {
 
     public UsersApi(){
         super();
-        basePath = String.format("users/");
+        basePath = "users/";
     }
 
     public User getSingleUser(String userId, String statusCode){

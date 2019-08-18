@@ -9,7 +9,7 @@ public class RegisterApi extends BaseApi {
 
     public RegisterApi(){
         super();
-        basePath = String.format("register");
+        basePath = "register";
     }
 
     public Register registerUser(User newUser, String statusCode){
